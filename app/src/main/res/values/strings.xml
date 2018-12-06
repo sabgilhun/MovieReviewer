@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MovieReviewer</string>
+
+    <!-- movie_reviewer.xml -->
+    <string name="hint_search_edit_text">검색...</string>
+    <string name="btn_search">Search</string>
+
 </resources>
