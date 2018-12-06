@@ -158,3 +158,4 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 app/libs/
+.idea/misc.xml
