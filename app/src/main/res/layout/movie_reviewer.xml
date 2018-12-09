@@ -32,8 +32,16 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="0.3"
+                android:onClick="@{()-> viewModel.newItem()}"
                 android:text="@string/btn_search" />
+
         </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:items="@{viewModel.items}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
     </LinearLayout>
 </layout>
