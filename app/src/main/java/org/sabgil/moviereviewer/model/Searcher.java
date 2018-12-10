@@ -8,43 +8,42 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class NaverSearcher {
-    private final static String TAG = NaverSearcher.class.getSimpleName();
+public class Searcher {
+    private final static String TAG = Searcher.class.getSimpleName();
 
-    String mClientId;
-    String mClientSecret;
-    String mRequestMethod;
-    String mApiUrl;
+    String clientId;
+    String clientSecret;
+    String apiUrl;
     String resultXML;
+    protected String additionParam = "";
 
-
-    public NaverSearcher() {
+    public Searcher() {
     }
 
-    public void setClientId(String mClientId) {
-        this.mClientId = mClientId;
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 
-    public void setClientSecret(String mClientSecret) {
-        this.mClientSecret = mClientSecret;
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
     }
 
-    public void setRequestMethod(String mRequestMethod) {
-        this.mRequestMethod = mRequestMethod;
+    public void setApiUrl(String apiUrl) {
+        this.apiUrl = apiUrl + "?query=";
     }
 
-    public void setApiUrl(String mApiUrl) {
-        this.mApiUrl = mApiUrl;
+    public void clearParam() {
+        additionParam = "";
     }
 
-    public void search(String text) {
-
+    public void search(final String method, String text) {
         final String searchUrl;
 
         try {
-            searchUrl = mApiUrl + URLEncoder.encode(text, "UTF-8");
+            searchUrl = apiUrl + URLEncoder.encode(text, "UTF-8") + additionParam;
+            Log.i(TAG, searchUrl);
         } catch (Exception e) {
-            Log.e(TAG, "encode error", e);
+            Log.e(TAG, "encoding error");
             return;
         }
 
@@ -56,9 +55,9 @@ public class NaverSearcher {
                 try {
                     URL url = new URL(searchUrl);
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    con.setRequestMethod(mRequestMethod);
-                    con.setRequestProperty("X-Naver-Client-Id", mClientId);
-                    con.setRequestProperty("X-Naver-Client-Secret", mClientSecret);
+                    con.setRequestMethod(method);
+                    con.setRequestProperty("X-Naver-Client-Id", clientId);
+                    con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
                     int responseCode = con.getResponseCode();
 
                     BufferedReader br;
@@ -79,7 +78,7 @@ public class NaverSearcher {
 
                     Log.i(TAG, resultXML);
                 } catch (Exception e) {
-                    Log.e(TAG, "naver api search error", e);
+                    Log.e(TAG, "search error", e);
                 }
             }
         }.start();
