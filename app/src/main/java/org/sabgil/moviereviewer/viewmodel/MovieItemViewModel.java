@@ -1,6 +1,7 @@
 package org.sabgil.moviereviewer.viewmodel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.databinding.ObservableField;
 import android.databinding.ObservableFloat;
@@ -8,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -41,6 +43,14 @@ public class MovieItemViewModel {
         imgLoad.setItem(item);
         imgLoad.start();
     }
+
+    public void onClickItem() {
+        Uri uri = Uri.parse(item.get("link"));
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
+    }
+
     class ImageLoad extends Thread {
         private HashMap<String, String> item;
 
