@@ -1,6 +1,8 @@
 package org.sabgil.moviereviewer.viewmodel;
 
-public interface ViewModel {
+import java.util.Observer;
+
+public interface ViewModel extends Observer {
 
     void onCreate();
     void onPause();

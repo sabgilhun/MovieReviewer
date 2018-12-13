@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class MovieReviewerActivity extends AppCompatActivity {
 
-    MovieReviewerViewModel viewModel = new MovieReviewerViewModel();
+    MovieReviewerViewModel viewModel = new MovieReviewerViewModel(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

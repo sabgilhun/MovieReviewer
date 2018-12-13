@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="item"
             type="org.sabgil.moviereviewer.viewmodel.MovieItemViewModel" />
@@ -19,22 +18,22 @@
             android:layout_width="0dp"
             android:layout_height="160dp"
             android:layout_weight="0.35"
-            app:srcCompat="@color/colorAccent" />
+            android:src="@{item.img}" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="0.65"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="left"
-                android:text="@{item.email}"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@{item.title}"
                 android:textColor="@android:color/background_dark"
-                android:textSize="24sp"
-                tools:text="test" />
+                android:textSize="18sp"
+                tools:text="title" />
 
             <RatingBar
                 android:id="@+id/ratingBar2"
@@ -42,16 +41,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
-                android:stepSize="0.5"
-                android:rating="@{item.rating}"/>
+                android:rating="@{item.rating}"
+                android:stepSize="0.5" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@{item.name}"
-                android:textSize="18sp"
-                tools:text="test" />
+                android:layout_height="wrap_content"
+                android:text="@{item.pubData}"
+                android:textSize="15sp"
+                tools:text="pubData" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{item.director}"
+                android:textSize="15sp"
+                tools:text="director" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{item.actor}"
+                android:textSize="15sp"
+                tools:text="actor" />
 
         </LinearLayout>
 

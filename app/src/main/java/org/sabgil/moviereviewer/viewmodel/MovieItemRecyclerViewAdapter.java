@@ -11,6 +11,7 @@ import org.sabgil.moviereviewer.view.BindingViewHolder;
 import java.util.ArrayList;
 
 public class MovieItemRecyclerViewAdapter extends RecyclerView.Adapter<BindingViewHolder<ListItemBinding>> {
+    private final static String TAG = MovieItemRecyclerViewAdapter.class.getSimpleName();
     private ArrayList<MovieItemViewModel> movieItems = new ArrayList<>();
 
     public void add(ArrayList<MovieItemViewModel> items) {
@@ -31,6 +32,7 @@ public class MovieItemRecyclerViewAdapter extends RecyclerView.Adapter<BindingVi
     @Override
     public void onBindViewHolder(BindingViewHolder<ListItemBinding> holder, int position) {
         holder.binding().setItem(movieItems.get(position));
+        movieItems.get(position).loadImageView();
     }
 
     @Override

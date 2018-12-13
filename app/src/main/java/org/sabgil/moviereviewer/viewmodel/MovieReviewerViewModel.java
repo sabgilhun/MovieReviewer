@@ -1,20 +1,24 @@
 package org.sabgil.moviereviewer.viewmodel;
 
+import android.content.Context;
 import android.databinding.ObservableArrayList;
 
-import org.sabgil.moviereviewer.model.MovieSearcher;
+import org.sabgil.moviereviewer.model.DataLoader;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Observable;
 import java.util.Random;
 
 public class MovieReviewerViewModel implements ViewModel {
-    private MovieSearcher searcher;
+    private Context context;
+    private DataLoader searcher;
     public final ObservableArrayList<MovieItemViewModel> items = new ObservableArrayList<>();
-
     Random gen = new Random();
 
-
-    public MovieReviewerViewModel() {
-        searcher = new MovieSearcher();
+    public MovieReviewerViewModel(Context context) {
+        this.context = context;
+        searcher = new DataLoader(this);
     }
 
     @Override
@@ -37,11 +41,18 @@ public class MovieReviewerViewModel implements ViewModel {
     }
 
     public void newItem() {
-        items.add(new MovieItemViewModel(
-                "name " + gen.nextInt(10),
-                "email " + gen.nextInt(10),
-                gen.nextInt(4) + gen.nextFloat()));
-        searcher.addParam("display", "20");
-        searcher.search("GET", "엑스맨");
+        searcher.searchMovieData("엑스맨");
+    }
+
+    private void addItem(ArrayList<HashMap<String, String>> items) {
+
+        for (HashMap<String, String> item : items) {
+            this.items.add(new MovieItemViewModel(context, item));
+        }
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        addItem(searcher.getList());
     }
 }
