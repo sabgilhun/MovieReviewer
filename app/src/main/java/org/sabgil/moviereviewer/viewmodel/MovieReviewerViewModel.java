@@ -3,6 +3,7 @@ package org.sabgil.moviereviewer.viewmodel;
 import android.content.Context;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
+import android.util.Log;
 
 import org.sabgil.moviereviewer.model.DataLoader;
 
@@ -11,6 +12,7 @@ import java.util.HashMap;
 import java.util.Observable;
 
 public class MovieReviewerViewModel implements ViewModel {
+    private final static String TAG = MovieReviewerViewModel.class.getSimpleName();
     private Context context;
     private DataLoader searcher;
     public final ObservableArrayList<MovieItemViewModel> items = new ObservableArrayList<>();
@@ -41,8 +43,13 @@ public class MovieReviewerViewModel implements ViewModel {
     }
 
     public void movieSearch() {
+        String searchWord;
+
+        searchWord = word.get();
         this.items.clear();
-        searcher.searchMovieData(word.get());
+        if( searchWord != null){
+            searcher.searchMovieData(word.get());
+        }
     }
 
     private void addItem(ArrayList<HashMap<String, String>> items) {
