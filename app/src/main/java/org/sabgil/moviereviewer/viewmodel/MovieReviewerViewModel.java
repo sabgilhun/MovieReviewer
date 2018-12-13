@@ -13,6 +13,7 @@ import java.util.Observable;
 
 public class MovieReviewerViewModel implements ViewModel {
     private final static String TAG = MovieReviewerViewModel.class.getSimpleName();
+
     private Context context;
     private DataLoader searcher;
     public final ObservableArrayList<MovieItemViewModel> items = new ObservableArrayList<>();
@@ -47,7 +48,7 @@ public class MovieReviewerViewModel implements ViewModel {
 
         searchWord = word.get();
         this.items.clear();
-        if( searchWord != null){
+        if (searchWord != null) {
             searcher.searchMovieData(word.get());
         }
     }

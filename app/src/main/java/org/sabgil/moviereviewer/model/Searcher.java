@@ -42,6 +42,7 @@ public class Searcher {
         try {
             url = apiUrl + "?query=" + URLEncoder.encode(searchWord, "UTF-8");
             Log.i(TAG, url);
+
         } catch (Exception e) {
             Log.e(TAG, "encoding error");
             return null;
@@ -70,6 +71,7 @@ public class Searcher {
 
             if (responseCode == 200) {
                 resultStream = connection.getInputStream();
+
             } else {
                 resultStream = connection.getErrorStream();
             }

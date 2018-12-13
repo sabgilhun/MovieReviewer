@@ -44,7 +44,7 @@ public class NaverApiParser {
             descNodes = (NodeList) xPath.evaluate(path, doc, XPathConstants.NODESET);
 
             for (int idx = 0; idx < descNodes.getLength(); idx++) {
-                HashMap<String,String> items = new HashMap<>();
+                HashMap<String, String> items = new HashMap<>();
                 for (Node node = descNodes.item(idx).getFirstChild(); node != null;
                      node = node.getNextSibling()) {
 
@@ -57,6 +57,7 @@ public class NaverApiParser {
             }
             Log.i(TAG, itemsList.toString());
             return itemsList;
+
         } catch (Exception e) {
             Log.e(TAG, "parse error", e);
             return null;

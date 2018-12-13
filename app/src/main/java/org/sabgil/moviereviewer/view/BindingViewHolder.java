@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 public class BindingViewHolder<T extends ViewDataBinding> extends RecyclerView.ViewHolder {
+    private final static String TAG = BindingViewHolder.class.getSimpleName();
+
     private final T binding;
 
     public BindingViewHolder(View view) {

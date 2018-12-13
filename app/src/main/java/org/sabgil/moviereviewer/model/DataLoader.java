@@ -1,6 +1,5 @@
 package org.sabgil.moviereviewer.model;
 
-import android.content.Context;
 import android.util.Log;
 
 import java.io.InputStream;
@@ -62,6 +61,7 @@ public class DataLoader extends Observable {
     public ArrayList<HashMap<String, String>> getList() {
         return loadMovieData;
     }
+
     public void addParam(String parameter, String value) {
         if (parameter.equals("display")) {
             if (Integer.parseInt(value) < 10 ||
@@ -70,12 +70,14 @@ public class DataLoader extends Observable {
                 return;
 
             }
+
         } else if (parameter.equals("start")) {
             if (Integer.parseInt(value) < 1 ||
                     Integer.parseInt(value) > 1000) {
                 Log.w(TAG, "invalid parameter value");
                 return;
             }
+
         } else if (parameter.equals("genre")) {
             if (Integer.parseInt(value) < 1 ||
                     Integer.parseInt(value) > 28) {
@@ -87,6 +89,7 @@ public class DataLoader extends Observable {
                 Log.w(TAG, "invalid parameter value");
                 return;
             }
+
         } else if (parameter.equals("yearfrom")) {
 
         } else if (parameter.equals("yearto")) {

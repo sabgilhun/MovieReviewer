@@ -20,8 +20,9 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class MovieItemViewModel {
-    public Context context;
+    private final static String TAG = MovieItemViewModel.class.getSimpleName();
 
+    public Context context;
     private HashMap<String, String> item;
     public final ObservableField<Spanned> title = new ObservableField<>();
     public final ObservableFloat rating = new ObservableFloat();
@@ -77,6 +78,7 @@ public class MovieItemViewModel {
                 Bitmap bitmap = BitmapFactory.decodeStream(is);
 
                 img.set(new BitmapDrawable(resources, bitmap));
+
             } catch (Exception e) {
 
             }
