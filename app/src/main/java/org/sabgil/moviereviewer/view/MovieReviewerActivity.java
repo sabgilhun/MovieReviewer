@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import org.sabgil.moviereviewer.databinding.MovieReviewerBinding;
 import org.sabgil.moviereviewer.R;
@@ -39,6 +40,6 @@ public class MovieReviewerActivity extends AppCompatActivity {
             adapter = (MovieItemRecyclerViewAdapter) recyclerView.getAdapter();
         }
 
-        adapter.add(items);
+        adapter.swap(items);
     }
 }

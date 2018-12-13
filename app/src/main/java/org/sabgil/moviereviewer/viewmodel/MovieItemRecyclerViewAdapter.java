@@ -1,6 +1,7 @@
 package org.sabgil.moviereviewer.viewmodel;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -14,13 +15,10 @@ public class MovieItemRecyclerViewAdapter extends RecyclerView.Adapter<BindingVi
     private final static String TAG = MovieItemRecyclerViewAdapter.class.getSimpleName();
     private ArrayList<MovieItemViewModel> movieItems = new ArrayList<>();
 
-    public void add(ArrayList<MovieItemViewModel> items) {
-        for (MovieItemViewModel item : items) {
-            if (!this.movieItems.contains(item)) {
-                this.movieItems.add(item);
-                notifyItemInserted(this.movieItems.size() - 1);
-            }
-        }
+    public void swap(ArrayList<MovieItemViewModel> items) {
+        movieItems.clear();
+        movieItems.addAll(items);
+        notifyDataSetChanged();
     }
 
     @Override
