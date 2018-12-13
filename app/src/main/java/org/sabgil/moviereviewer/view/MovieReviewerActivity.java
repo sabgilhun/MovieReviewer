@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -26,6 +27,8 @@ public class MovieReviewerActivity extends AppCompatActivity {
         MovieReviewerBinding binding =
                 DataBindingUtil.setContentView(this, R.layout.movie_reviewer);
         binding.setViewModel(viewModel);
+        binding.recyclerView.addItemDecoration(
+                new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
         viewModel.onCreate();
     }
 

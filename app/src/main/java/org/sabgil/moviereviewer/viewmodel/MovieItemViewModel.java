@@ -10,6 +10,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.Spanned;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -20,7 +23,7 @@ public class MovieItemViewModel {
     public Context context;
 
     private HashMap<String, String> item;
-    public final ObservableField<String> title = new ObservableField<>();
+    public final ObservableField<Spanned> title = new ObservableField<>();
     public final ObservableFloat rating = new ObservableFloat();
     public final ObservableField<String> pubData = new ObservableField<>();
     public final ObservableField<String> director = new ObservableField<>();
@@ -31,7 +34,7 @@ public class MovieItemViewModel {
         this.context = context;
         float rating = Float.parseFloat(item.get("userRating")) / 2;
         this.item = item;
-        this.title.set(item.get("title"));
+        this.title.set(Html.fromHtml(item.get("title")));
         this.rating.set(rating);
         this.pubData.set(item.get("pubDate"));
         this.director.set(item.get("director"));
