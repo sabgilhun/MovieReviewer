@@ -1,6 +1,7 @@
 package org.sabgil.moviereviewer.view;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -19,6 +20,7 @@ public class MovieItemRecyclerViewAdapter
     public void swap(ArrayList<MovieItemViewModel> items) {
         movieItems.clear();
         movieItems.addAll(items);
+
         notifyDataSetChanged();
     }
 
@@ -31,7 +33,7 @@ public class MovieItemRecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(BindingViewHolder<ListItemBinding> holder, int position) {
-        holder.binding().setItem(movieItems.get(position));
+        holder.binding().setItemViewModel((movieItems.get(position)));
         movieItems.get(position).loadImageView();
     }
 
@@ -39,4 +41,5 @@ public class MovieItemRecyclerViewAdapter
     public int getItemCount() {
         return movieItems.size();
     }
+
 }

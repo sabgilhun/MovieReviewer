@@ -13,7 +13,7 @@ public class DataLoader extends Observable {
     private final static String TAG = DataLoader.class.getSimpleName();
     private Searcher movieSearcher;
     private NaverApiParser xmlParser;
-    private ArrayList<HashMap<String, String>> loadMovieData;
+    private ArrayList<MovieItem> movieItems = new ArrayList<>();
 
     public DataLoader(Observer o) {
         String id = "N5HWwaV7Q7Ih4NsIulvK";
@@ -40,7 +40,12 @@ public class DataLoader extends Observable {
                 InputStream resultXmlStream;
 
                 resultXmlStream = movieSearcher.search(text);
-                loadMovieData = xmlParser.parse(resultXmlStream);
+                ArrayList<HashMap<String, String>> items = xmlParser.parse(resultXmlStream);
+
+                movieItems.clear();
+                for (HashMap<String, String> data : items) {
+                    movieItems.add(new MovieItem(data));
+                }
 
                 setChanged();
                 notifyObservers();
@@ -58,8 +63,8 @@ public class DataLoader extends Observable {
         list.add("userRating");
     }
 
-    public ArrayList<HashMap<String, String>> getList() {
-        return loadMovieData;
+    public ArrayList<MovieItem> getItems() {
+        return movieItems;
     }
 
     public void addParam(String parameter, String value) {

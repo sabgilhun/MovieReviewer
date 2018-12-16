@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="org.sabgil.moviereviewer.viewmodel.MovieReviewerViewModel" />
@@ -27,7 +29,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="0.7"
                 android:hint="@string/hint_search_edit_text"
-                android:text="@={viewModel.word}"/>
+                android:text="@={viewModel.word}" />
 
             <Button
                 android:layout_width="0dp"
