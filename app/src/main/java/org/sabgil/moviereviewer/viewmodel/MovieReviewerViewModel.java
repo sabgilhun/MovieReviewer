@@ -19,11 +19,13 @@ public class MovieReviewerViewModel implements ViewModel {
     public final ObservableArrayList<MovieItemViewModel> items = new ObservableArrayList<>();
     public final ObservableField<String> word = new ObservableField<>();
     public final ObservableBoolean isResult = new ObservableBoolean();
+    public final ObservableBoolean startSearch = new ObservableBoolean();
 
     public MovieReviewerViewModel(Context context) {
         this.context = context;
         searcher = new DataLoader(this);
         isResult.set(true);
+        startSearch.set(false);
     }
 
     @Override
@@ -55,12 +57,13 @@ public class MovieReviewerViewModel implements ViewModel {
         } else {
             isResult.set(false);
         }
-
+        startSearch.set(false);
     }
 
     public void movieSearch() {
         String searchWord;
 
+        startSearch.set(true);
         searchWord = word.get();
         this.items.clear();
         if (searchWord != null) {

@@ -6,4 +6,7 @@
     <string name="btn_search">Search</string>
     <string name="no_result_text">검색된 영화가 없습니다.</string>
 
+    <!-- progress_dialog.xml -->
+    <string name="loading">잠시만 기다려주세요.</string>
+
 </resources>

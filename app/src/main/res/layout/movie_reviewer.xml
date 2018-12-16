@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="org.sabgil.moviereviewer.viewmodel.MovieReviewerViewModel" />
@@ -13,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
+        android:isSearch="@{viewModel.startSearch}"
         android:orientation="vertical"
         tools:context="org.sabgil.moviereviewer.view.MovieReviewerActivity">
 
@@ -22,10 +24,14 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/search"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="0.7"
                 android:hint="@string/hint_search_edit_text"
+                android:inputType="text"
+                android:maxLength="30"
+                android:maxLines="1"
                 android:text="@={viewModel.word}" />
 
             <Button
@@ -46,15 +52,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:items="@{viewModel.items}"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager" >
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager">
 
             </android.support.v7.widget.RecyclerView>
 
             <LinearLayout
-                android:visibility="@{!viewModel.isResult}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="@{!viewModel.isResult}">
 
                 <ImageView
                     android:layout_width="0dp"
@@ -67,13 +73,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.7"
-                    android:textSize="20sp"
                     android:gravity="center"
                     android:padding="10dp"
                     android:text="@string/no_result_text"
+                    android:textSize="20sp"
                     tools:text="검색 결과가 없습니다." />
+
             </LinearLayout>
         </FrameLayout>
-
     </LinearLayout>
 </layout>
