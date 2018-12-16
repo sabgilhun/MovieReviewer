@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.databinding.ObservableField;
 import android.databinding.ObservableFloat;
+import android.util.Log;
 
 import org.sabgil.moviereviewer.model.MovieItem;
 
@@ -48,10 +49,16 @@ public class MovieItemViewModel {
                     con.setDoInput(true);
                     con.connect();
 
-                    img.set(BitmapFactory.decodeStream(con.getInputStream()));
+                    if(con.getInputStream() == null) {
+                        Log.i(TAG, "null");
+                    } else {
+                        Log.i(TAG, "null2");
+                        img.set(BitmapFactory.decodeStream(con.getInputStream()));
+                    }
 
                 } catch (Exception e) {
-
+                    img.set(null);
+                    Log.i(TAG, "null3");
                 }
             }
         }.start();

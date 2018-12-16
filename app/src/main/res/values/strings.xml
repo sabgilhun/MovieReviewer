@@ -4,5 +4,6 @@
     <!-- movie_reviewer.xml -->
     <string name="hint_search_edit_text">검색...</string>
     <string name="btn_search">Search</string>
+    <string name="no_result_text">검색된 영화가 없습니다.</string>
 
 </resources>

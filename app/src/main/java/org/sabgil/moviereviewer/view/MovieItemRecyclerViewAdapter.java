@@ -20,7 +20,6 @@ public class MovieItemRecyclerViewAdapter
     public void swap(ArrayList<MovieItemViewModel> items) {
         movieItems.clear();
         movieItems.addAll(items);
-
         notifyDataSetChanged();
     }
 
@@ -41,5 +40,4 @@ public class MovieItemRecyclerViewAdapter
     public int getItemCount() {
         return movieItems.size();
     }
-
 }
